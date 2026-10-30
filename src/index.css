@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-app: #F8FAFC;
+    --navy-sidebar: #101C32;
+    --navy-topbar: #101C32;
+    --champagne: #C9A24A;
+    --champagne-hover: #B38F3B;
+    --champagne-light: #FAF5E8;
+    --charcoal: #0F172A;
+    --charcoal-muted: #64748B;
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg-app: #020617;
+    --navy-sidebar: #0F172A;
+    --navy-topbar: #0F172A;
+    --champagne: #E5C158;
+    --champagne-hover: #C9A24A;
+    --champagne-light: rgba(201, 162, 74, 0.12);
+    --charcoal: #F1F5F9;
+    --charcoal-muted: #94A3B8;
+    --card-bg: #0F172A;
+    --card-border: #1E293B;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Kannada', 'Noto Sans Malayalam', 'Noto Sans Bengali', 'Noto Sans Gujarati', 'Noto Sans Gurmukhi', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--charcoal);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+}
+
+/* Luxury Goldsmith & Manufacturer typography */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Clean enterprise scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Print styles for Thermal Receipts, Delivery Challans & Tax Invoices */
+@media print {
+  @page {
+    size: auto;
+    margin: 5mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide everything outside printable container */
+  header, aside, nav, .no-print, button {
+    display: none !important;
+  }
+
+  /* Make sure modal overlays do not block or darken printed document */
+  .fixed.inset-0 {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #printableArea, .printable-area, .challan-print {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  #printableArea *, .printable-area *, .challan-print * {
+    visibility: visible !important;
+    color: #000000 !important;
+  }
+}
